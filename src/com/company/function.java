@@ -38,8 +38,41 @@ public class function {
         val = ((val.length() % 4 == 2) ? "00" : "" ) + val;   //Ternary operators
         val = ((val.length() % 4 == 3) ? "0" : "" ) + val;
         System.out.println(val);
+
+
+        int add; for(int i = 0; i < val.length(); i = i + 4)
+        {
+            add = function.bintoDec(val.substring(i, i + 4));
+            if(add < 10)
+                out.append(Integer.toString(add));
+            else
+                {
+                    switch (add)
+                    {
+                        case 10 :
+                            out.append("A");
+                            break;
+                        case 11 :
+                            out.append("B");
+                            break;
+                         case 12 :
+                             out.append("C");
+                             break;
+                         case 13 :
+                             out.append("D");
+                             break;
+                         case 14 :
+                             out.append("E");
+                             break;
+                         case 15 :
+                             out.append("F");
+                             break;
+                    }
+                }
+        }
         return out.toString();
     }
+    
 
     public static int bintoDec (String a)
     {

@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        System.out.println(function.bintoDec("0111"));
+        System.out.println(function.bintoHex(1001001));
 
     }
 }
