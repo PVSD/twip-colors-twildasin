@@ -7,7 +7,23 @@ import java.util.Objects;
  */
 public class function {
 
-    public static int dectoBin (int a)
+
+    public static String hextoRGB (String a)
+    {
+        return Integer.toString(function.hextoDec(a.substring(0,2))) + ", " + Integer.toString(function.hextoDec(a.substring(2, 4))) + ", " + function.hextoDec(a.substring(4, 6));
+    }
+
+    public static String dectoHex (int a)
+    {
+        return function.bintoHex((function.dectoBin(a)));
+    }
+
+    public static int hextoDec (String a)
+    {
+        return function.bintoDec(function.hextoBin(a));
+    }
+
+    private static int dectoBin (int a)
     {
         int in = a;
         StringBuffer binOut = new StringBuffer();
@@ -27,7 +43,8 @@ public class function {
         }
         return Integer.parseInt(binOut.toString());
     }
-    public static String bintoHex (int a)
+
+    private static String bintoHex (int a)
     {
         StringBuffer out = new StringBuffer();
         String val = Integer.toString(a);
@@ -37,7 +54,6 @@ public class function {
         val = ((val.length() % 4 == 1) ? "000" : "" ) + val;
         val = ((val.length() % 4 == 2) ? "00" : "" ) + val;   //Ternary operators
         val = ((val.length() % 4 == 3) ? "0" : "" ) + val;
-        System.out.println(val);
 
 
         int add; for(int i = 0; i < val.length(); i = i + 4)
@@ -72,9 +88,8 @@ public class function {
         }
         return out.toString();
     }
-    
 
-    public static int bintoDec (String a)
+    private static int bintoDec (String a)
     {
         int out = 0;
         String test = a;
@@ -89,4 +104,62 @@ public class function {
         }
         return out;
     }
+
+    private static String hextoBin (String a)
+    {
+        String apnd;
+        StringBuffer out = new StringBuffer();
+        String pos;
+        boolean pass = true;
+        for(int i = 0; i < a.length(); i++)
+        {
+            pass = true;
+            pos = a.substring(i, i+1);
+            pos = pos.toUpperCase();
+            try
+            {
+                Integer.parseInt(pos);
+            }
+            catch (NumberFormatException e)
+            {
+                pass = false;
+                switch (pos)
+                {
+                    case "A" :
+                        out.append("1010");
+                        break;
+                    case "B" :
+                        out.append("1011");
+                        break;
+                    case "C" :
+                        out.append("1100");
+                        break;
+                    case "D" :
+                        out.append("1101");
+                        break;
+                    case "E" :
+                        out.append("1110");
+                        break;
+                    case "F" :
+                        out.append("1111");
+                        break;
+                }
+            }
+            if(pass)
+            {
+                apnd = Integer.toString(function.dectoBin(Integer.parseInt(pos)));
+
+
+                apnd = ((apnd.length() % 4 == 1) ? "000" : "" ) + apnd;
+                apnd = ((apnd.length() % 4 == 2) ? "00" : "" ) + apnd;   //Ternary operators
+                apnd = ((apnd.length() % 4 == 3) ? "0" : "" ) + apnd;
+
+                out.append(apnd);
+
+            }
+        }
+        return out.toString();
+    }
+
+
 }
