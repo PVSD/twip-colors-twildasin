@@ -44,6 +44,7 @@ public class function {
     {
         int out = 0;
         String test = a;
+        //Tests every position of the binary string. If its a zero, add the corresponding 2 ^ ___ value based on time through the for loop.
         for(int i = 0; i < a.length(); i++)
         {
             if(Objects.equals(test.substring(test.length() -1, test.length()), "1"))
