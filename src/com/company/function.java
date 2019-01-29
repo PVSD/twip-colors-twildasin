@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Objects;
+
 /**
  * Created by tw073 on 1/29/19.
  */
@@ -36,5 +38,20 @@ public class function {
         val = ((val.length() % 4 == 3) ? "0" : "" ) + val;
         System.out.println(val);
         return 2;
+    }
+
+    public static int bintoDec (String a)
+    {
+        int out = 0;
+        String test = a;
+        for(int i = 0; i < a.length(); i++)
+        {
+            if(Objects.equals(test.substring(test.length() -1, test.length()), "1"))
+            {
+                out = out + (int)Math.pow(2, i);
+            }
+            test = test.substring(0, test.length()-1);
+        }
+        return out;
     }
 }
