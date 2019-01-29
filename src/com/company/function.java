@@ -27,8 +27,9 @@ public class function {
         }
         return Integer.parseInt(binOut.toString());
     }
-    public static int bintoHex (int a)
+    public static String bintoHex (int a)
     {
+        StringBuffer out = new StringBuffer();
         String val = Integer.toString(a);
         String test = "";
         //Makes sure the inputted binary chain has a length that is a multiple of 4.
@@ -37,7 +38,7 @@ public class function {
         val = ((val.length() % 4 == 2) ? "00" : "" ) + val;   //Ternary operators
         val = ((val.length() % 4 == 3) ? "0" : "" ) + val;
         System.out.println(val);
-        return 2;
+        return out.toString();
     }
 
     public static int bintoDec (String a)
