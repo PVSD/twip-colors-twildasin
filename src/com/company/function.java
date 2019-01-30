@@ -13,12 +13,17 @@ public class function {
         return Integer.toString(function.hextoDec(a.substring(0,2))) + ", " + Integer.toString(function.hextoDec(a.substring(2, 4))) + ", " + function.hextoDec(a.substring(4, 6));
     }
 
-    public static String dectoHex (int a)
+    public static String RGBtoHex (int a, int b, int c)
+    {
+        return "#" + function.dectoHex(a) + function.dectoHex(b) + function.dectoHex(c);
+    }
+
+    private static String dectoHex (int a)
     {
         return function.bintoHex((function.dectoBin(a)));
     }
 
-    public static int hextoDec (String a)
+    private static int hextoDec (String a)
     {
         return function.bintoDec(function.hextoBin(a));
     }
@@ -160,6 +165,5 @@ public class function {
         }
         return out.toString();
     }
-
-
+    
 }
