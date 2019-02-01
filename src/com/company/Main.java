@@ -83,7 +83,7 @@ public class Main {
             System.out.println("The B Value:");
             Bin = kbin.nextLine();
 
-            System.out.println(Rin + Gin + Bin);
+            //System.out.println(Rin + Gin + Bin);
             inName = function.RGBtoHex(Integer.parseInt(Rin), Integer.parseInt(Gin), Integer.parseInt(Bin));
             //inName = function.RGBtoHex(1, 3, 4);
 
