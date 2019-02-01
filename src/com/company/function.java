@@ -1,6 +1,9 @@
 package com.company;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  * Created by tw073 on 1/29/19.
@@ -15,7 +18,10 @@ public class function {
 
     public static String RGBtoHex (int a, int b, int c)
     {
-        return "#" + function.dectoHex(a) + function.dectoHex(b) + function.dectoHex(c);
+        //System.out.println(a);
+        //System.out.println(b);
+        //System.out.println(c);
+        return function.dectoHex(a) + function.dectoHex(b) + function.dectoHex(c);
     }
 
     private static String dectoHex (int a)
@@ -91,7 +97,13 @@ public class function {
                     }
                 }
         }
-        return out.toString();
+        //System.out.println("Neeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" + out);
+        String prinout = out.toString();
+        if(prinout.length() < 2)
+        {
+            prinout = "0" + prinout;
+        }
+        return prinout;
     }
 
     private static int bintoDec (String a)
@@ -165,5 +177,63 @@ public class function {
         }
         return out.toString();
     }
+
+    public static String testForHTML (String a, int findTheName) throws IOException
+    {
+
+        int place = 0;
+        String names [] = new String[865];
+        String codes [] = new String[865];
+
+        Scanner sc = new Scanner( new File("MyList.txt"));
+        sc.useDelimiter(",");
+        while (sc.hasNext())
+        {
+            sc.next();
+            names[place] = sc.next();
+            codes[place] = sc.next();
+            sc.nextLine();
+            place++;
+        }
+
+        int pos = -1;
+        String nName = a;
+        nName = nName.toLowerCase();
+        nName = nName.replaceAll(" ", "");
+
+        if(findTheName == 1)
+        {
+            for(int i = 0; i < names.length; i++)
+            {
+                //System.out.println((((names[i].toLowerCase()).replaceAll(" ","").replaceAll("\"", ""))));
+                pos = (nName.equals(((names[i].toLowerCase()).replaceAll(" ","").replaceAll("\"", "")))) ? i : pos;
+            }
+            if(pos > -1)
+            {
+                return codes[pos];
+                //System.out.println("Hex Code: " + codes[pos]);
+            }
+            else
+                return "-1";
+        }
+        else
+        {
+            for(int i = 0; i < names.length; i++)
+            {
+                pos = (a.equals(codes[i].replaceAll("#", ""))) ? i : pos;
+            }
+            if(pos > -1)
+            {
+                return names[pos];
+                //System.out.println("Color Name: " + names[pos]);
+            }
+            else
+                return "-1";
+        }
+
+
+
+    }
+
 
 }
